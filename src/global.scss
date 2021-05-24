@@ -24,3 +24,58 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap'); // import poppins font
+
+ion-button { 
+    transition: box-shadow .3s ease;
+    text-transform: none; // make buttons not all caps
+    // font-weight: 600; // semi bold
+    --box-shadow: none;
+    border-radius: 5px;
+} 
+
+ion-button:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    // box-shadow: 0 0 0 5px rgba(21, 156, 228, 0.4);
+    background-color: 21, 156, 228;
+    fill: solid;
+}
+
+// ion-button:focus {
+//     outline: none;
+//     box-shadow: 0 0 0 5px rgba(21, 156, 228, 0.4);
+// }
+
+ion-header {
+    background-color: var(--ion-color-primary);
+    
+    // height: 100px;
+}
+
+ion-toolbar {
+    background-color: var(--ion-color-primary);
+    --ion-toolbar-background: var(--ion-color-primary);
+    color: #ffffff;
+    text-align: center;
+    --border-style: none;
+}
+
+.header-md::after { // remove shadow in header
+    display: none;
+}
+
+
+ion-tab-bar, ion-tab-button {
+    background-color: #e1e1e1;
+    --color: #919191;
+    --color-selected: #404040;
+}
+
+
+
+h1 {
+    font-weight: 600;
+}
+
