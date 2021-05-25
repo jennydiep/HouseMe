@@ -28,18 +28,6 @@
   margin-right: 10px;
 }
 
-ion-icon.discord {
-  color: #7289DA;
-}
-
-ion-icon.facebook {
-  color: #3b5998;
-}
-
-ion-icon.snapchat {
-  color: #FFFC00;
-}
-
 .summary {
   padding-top: 20px;
   padding-left: 30px;
@@ -63,8 +51,8 @@ ion-icon.snapchat {
 
 .fullcolumn {
   float: left;
-  padding: 10px;
-  line-height: 16px;
+  padding-left: 10px;
+  margin-bottom: 20px
 }
 
 .row:after {
