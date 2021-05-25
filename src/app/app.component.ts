@@ -14,7 +14,7 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.router.navigateByUrl('signup');
+      this.router.navigateByUrl('accountaccess');
     });
   }
 }
