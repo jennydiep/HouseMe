@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides #slides [options]="{ allowTouchMove: false }">
+    <ion-slide>
+      <p>First Slide</p>
+      <ion-button (click)='slides.slideNext()' class='semi-bold' color="primary">Next</ion-button>
+    </ion-slide>
+    
+    <ion-slide>
+      <p>Second Slide</p>
+      <ion-button (click)='slides.slideNext()' class='semi-bold' color="primary">Next</ion-button>
+    </ion-slide>
+
+    <ion-slide>
+      <p>Second Slide</p>
+      <ion-button (click)='navigateToHome()' class='semi-bold' color="primary">Submit</ion-button>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
