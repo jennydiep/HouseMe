@@ -3,7 +3,7 @@
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: gray;
+  background-color: #f2f2f2;
   text-align: center;
   width: 80%;
   display: block;
@@ -19,11 +19,13 @@
 }
 
 .badge-text {
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .social {
-  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -31,7 +33,7 @@
 .summary {
   padding-top: 20px;
   padding-left: 30px;
-  padding-right: 20px;
+  padding-right: 30px;
 }
 
 .border {
@@ -52,6 +54,7 @@
 .fullcolumn {
   float: left;
   padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 20px
 }
 
@@ -66,19 +69,17 @@
 }
 
 .answer {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 
-.bottom {
-  text-align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
+#pfp {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 
-.bottom-buttons {
-  margin-top: 10px;
-  font-size: 14px;
+.profile-icon {
+  width: 40px;
+  height: 40px;
 }
