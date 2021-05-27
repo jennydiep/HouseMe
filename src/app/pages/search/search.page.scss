@@ -1,0 +1,55 @@
+ion-button{
+    --border-radius:7px;
+    font-size: x-small;
+}
+ion-select{
+    border-radius:7px;
+    background-color: rgb(233, 233, 233);
+    font-size: x-small;
+}
+ion-datetime{
+    background-color: rgb(233, 233, 233);
+    border-radius:7px;
+    font-size: x-small;
+}
+ion-input{
+    text-align: center;
+    background-color: rgb(233, 233, 233);
+    border-radius:7px;
+    font-size: x-small;
+}
+ion-radio{
+    width: 12px;
+    height: 12px;
+}
+ion-label{
+    margin-left: 10px;
+    font-size: x-small;
+}
+p{
+    color: black;
+}
+hr {
+    background: black;
+    margin-top: 22px;
+    width: 70%;
+}
+label{
+    font-size: smaller;
+    margin-left: 5px;
+}
+
+.results ion-label{
+    margin-left: 15px;
+    font-size: smaller;
+}
+.buttons{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 8px;
+}
+
+#down-arrow{
+    margin-top: 0%;
+    margin-left: 0%;
+}
