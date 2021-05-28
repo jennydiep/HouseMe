@@ -47,9 +47,9 @@ export class SignupPage implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  // isClicked() {
-  //   return this.isClick;
-  // }
+  navigateToAccountAccess() {
+    this.router.navigateByUrl('accountaccess');
+  }
 
   onMaleClick() {
     this.gender = "Male";

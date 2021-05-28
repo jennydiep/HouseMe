@@ -1,7 +1,3 @@
-// ion-slides {
-//     height: auto;
-// }
-
 ion-slide {
     margin: 0 0 0 0 !important;
     padding: 0 0 0 0 !important;
@@ -46,7 +42,7 @@ ion-range::part(pin)::before {
 }
 
 .slide-title {
-    margin-top: 2em;
+    margin-top: 0 !important;
 }
 
 .slide-content {
@@ -56,8 +52,8 @@ ion-range::part(pin)::before {
 }
 
 .gender-btn {
-    width: 25vw !important;
-    height: 25vw !important;
+    width: 28vw !important;
+    height: 28vw !important;
     margin-bottom: 1.5em;
     // margin-right: 0.5em;
 }
@@ -113,4 +109,8 @@ ion-range::part(pin)::before {
 
 .subtitle {
     font-size: small !important;
+}
+
+.back-btn {
+    margin-top: 0.5em;
 }
