@@ -1,19 +1,149 @@
 <ion-content>
-
-  <ion-slides #slides [options]="{ allowTouchMove: false }">
+  <ion-slides #slides [options]="{ allowTouchMove: false, autoHeight: true }">
     <ion-slide>
-      <p>First Slide</p>
-      <ion-button (click)='slides.slideNext()' class='semi-bold' color="primary">Next</ion-button>
+      <div class="slide-content" style="display: block; text-align: left;">
+        <h1 class="slide-title">Sign Up</h1>
+        <ion-note class="subtitle">First, some basic info about you.</ion-note>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ion-icon id="profile-icon" name="person-circle-outline"></ion-icon>
+              </ion-col>
+              <ion-col>
+                Profile Picture
+                <br>
+                <ion-button>Upload</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-label position="floating" class="floating-label">First Name</ion-label>
+          <ion-input class="input" [(ngModel)]="firstName"></ion-input>
+          <ion-label position="floating" class="floating-label">Last Name</ion-label>
+          <ion-input class="input" [(ngModel)]="lastName"></ion-input>
+          <ion-label position="floating" class="floating-label">Birthday</ion-label>
+          <ion-input class="input" placeholder="MM/DD/YYYY" [(ngModel)]="birthday"></ion-input>
+          <ion-label position="floating" class="floating-label">Major</ion-label>
+          <ion-select class="input" placeholder="Select your major" mode="ios" [(ngModel)]="major">
+            <ion-select-option *ngFor="let major of majors" [value]="major">{{ major }}</ion-select-option>
+          </ion-select>
+          <div style="text-align: center;">
+            <ion-button class="gender-btn" (click)="onMaleClick()">
+              <div class="custom-button-content">
+                <ion-icon class="gender-icon" name="male-outline" size="large"></ion-icon>
+                <ion-label class="gender-btn-label">Male</ion-label>
+              </div>
+            </ion-button>
+            <ion-button class="gender-btn" color="secondary" (click)="onFemaleClick()">
+              <div class="custom-button-content">
+                <ion-icon class="gender-icon" name="female-outline" size="large"></ion-icon>
+                <ion-label class="gender-btn-label">Female</ion-label>
+              </div>
+            </ion-button>
+            <ion-button class="gender-btn" color="tertiary" (click)="onNonBinaryClick()">
+              <div class="custom-button-content">
+                <img class="gender-icon" src="../../../assets/images/nonbinary.png" style="width: 60%; height: 60%;">
+                <ion-label class="gender-btn-label">Non-Binary</ion-label>
+              </div>
+            </ion-button>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <ion-button (click)='slides.slideNext()' class='semi-bold next-btn' color="primary">Next</ion-button>
+        </div>
+        <div style="text-align: center;">
+          <ion-icon name="ellipse" color="primary" class="page-ellipse"></ion-icon>
+          <ion-icon name="ellipse" color="medium" class="page-ellipse"></ion-icon>
+          <ion-icon name="ellipse" color="medium" class="page-ellipse"></ion-icon>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-content" style="display: block; text-align: left;">
+        <h1 class="slide-title">Housing</h1>
+        <ion-note class="subtitle">Second, housing preferences.</ion-note>
+        <div style="text-align: center;">
+          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick > 0 ? 'solid': 'outline'" (click)="haveHousingClick()">I already have housing.</ion-button>
+          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick < 0 ? 'solid': 'outline'" (click)="noHousingClick()">I do not have housing yet.</ion-button>
+        </div>
+        <p style="font-size: small; margin-bottom: 1em;">
+          Please fill in the following information about your current housing preferences.
+        </p>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating" class="floating-label">Location</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" size-sm="2">
+              <ion-button class="location-btn" color="primary" [fill]="isLocationClick > 0 ? 'solid': 'outline'" (click)="onCampusClick()">On Campus</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="location-btn" color="primary" [fill]="isLocationClick < 0 ? 'solid': 'outline'" (click)="offCampusClick()">Off Campus</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating" class="floating-label"># of People per Bedroom</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button class="bedroom-btn" color="primary" [fill]="isBedroomClick == 1 ? 'solid': 'outline'" (click)="bedOneClick()">1</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="bedroom-btn" color="primary" [fill]="isBedroomClick == 2 ? 'solid': 'outline'" (click)="bedTwoClick()">2</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="bedroom-btn" color="primary" [fill]="isBedroomClick == 3 ? 'solid': 'outline'" (click)="bedThreeClick()">3</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="bedroom-btn" color="primary" [fill]="isBedroomClick == 4 ? 'solid': 'outline'" (click)="bedFourClick()">4</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating" class="floating-label">Co-Ed Preferences</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick > 0 ? 'solid': 'outline'" (click)="yesCoedClick()">All Genders</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick < 0 ? 'solid': 'outline'" (click)="noCoedClick()">Similar Only</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating" class="floating-label">Max Rent (per month)</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-range min="300" max="1300" step="100" snaps="true" ticks="true" pin="true" style="margin-bottom: 0;" [(ngModel)]="maxRent" mode="ios">
+                <ion-label slot="start" style="font-size: x-small;">$300</ion-label>
+                <ion-label slot="end" style="font-size: x-small;">$1300+</ion-label>
+              </ion-range>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div style=" display: block; text-align: center;">
+          <ion-button (click)='slides.slideNext()' class='semi-bold next-btn' color="primary">Next</ion-button>
+        </div>
+        <div style="text-align: center;">
+          <ion-icon name="ellipse" color="medium" class="page-ellipse"></ion-icon>
+          <ion-icon name="ellipse" color="primary" class="page-ellipse"></ion-icon>
+          <ion-icon name="ellipse" color="medium" class="page-ellipse"></ion-icon>
+        </div>
+      </div>
     </ion-slide>
 
     <ion-slide>
       <p>Second Slide</p>
-      <ion-button (click)='slides.slideNext()' class='semi-bold' color="primary">Next</ion-button>
-    </ion-slide>
-
-    <ion-slide>
-      <p>Second Slide</p>
-      <ion-button (click)='navigateToHome()' class='semi-bold' color="primary">Submit</ion-button>
+      <ion-button (click)='navigateToHome()' class='semi-bold' color="primary" (click)="addUserData()">Submit</ion-button>
     </ion-slide>
   </ion-slides>
 

@@ -1,3 +1,116 @@
+// ion-slides {
+//     height: auto;
+// }
+
+ion-slide {
+    margin: 0 0 0 0 !important;
+    padding: 0 0 0 0 !important;
+    display: flex;
+}
+
+ion-range {
+    --knob-size: 5vw;
+    --knob-background: #ff6392;
+    --bar-background: #7fc8f8;
+    --bar-background-active: #7fc8f8;
+}
+
+ion-range::part(tick) {
+    background-color: #7fc8f8 !important;
+}
+
+ion-range::part(tick-active) {
+    background-color: #7fc8f8 !important;
+}
+
+ion-range::part(pin) {
+    color: #ff6392 !important;
+}
+
+ion-range::part(pin)::before {
+    content: "$";
+}
+
+#profile-icon {
+    font-size: 72px;
+}
+
+.input {
+    margin-bottom: 0.5em;
+    color: 'black';
+    font-size: small !important;
+}
+
 .semi-bold {
     font-weight: 600;
+}
+
+.slide-title {
+    margin-top: 2em;
+}
+
+.slide-content {
+    margin: 0 0 0 0 !important;
+    padding: 0.5em !important;
+    width: 100%;
+}
+
+.gender-btn {
+    width: 25vw !important;
+    height: 25vw !important;
+    margin-bottom: 1.5em;
+    // margin-right: 0.5em;
+}
+
+.gender-btn-label {
+    font-size: 80%;
+}
+
+.custom-button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-ellipse {
+    font-size: 8px;
+    margin-right: 1em;
+}
+
+.next-btn {
+    width: 40vw !important;
+}
+
+.gender-icon {
+    margin-bottom: 0.3em;
+}
+
+.housing-btn {
+    width: 100% !important;
+    height: 8vh !important;
+    font-size: small !important;
+    margin-bottom: 1em;
+}
+
+.location-btn {
+    width: 35vw !important;
+    font-size: small !important;
+}
+
+.coed-btn {
+    width: 35vw !important;
+    font-size: small !important;
+}
+
+.bedroom-btn {
+    width: 15vw !important;
+    font-size: small !important;
+}
+
+.floating-label {
+    font-size: small !important;
+}
+
+.subtitle {
+    font-size: small !important;
 }
