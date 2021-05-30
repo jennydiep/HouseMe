@@ -126,14 +126,14 @@ export class SignupPage implements OnInit {
     this.userData["maxRent"] = this.maxRent;
 
 
-  //   this.storageService.addUser(this.firstName, this.userData);
-  //   this.storageService.getUser(this.firstName).then(res => {
-  //     if (res != null) {
-  //       console.log(res);
-  //     }
-  //   }).catch(e => {
-  //     console.log('error: ', e);
-  //   });
+    this.storageService.addUser(this.firstName, this.userData);
+    this.storageService.getUser(this.firstName).then(res => {
+      if (res != null) {
+        console.log(res);
+      }
+    }).catch(e => {
+      console.log('error: ', e);
+    });
   }
 
 }
