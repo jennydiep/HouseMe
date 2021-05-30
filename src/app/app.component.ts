@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   constructor(private platform: Platform, private router : Router) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.router.navigateByUrl('accountaccess');
+      this.router.navigateByUrl('signup');
     });
   }
 }

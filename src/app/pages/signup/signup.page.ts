@@ -25,6 +25,16 @@ export class SignupPage implements OnInit {
   coedPref: string = "All Genders";
   maxRent: string = "";
 
+  // personality page variables
+  drugs: string = "";
+  alcohol: string = "";
+  wake: string = "";
+  sleep: string = "";
+  chores: string = "";
+  pets: string = "";
+  interests: string = "";
+  bio: string = "";
+
   userData: object = {};
 
   constructor(private router:Router, public storageService: StorageService) {
@@ -125,9 +135,18 @@ export class SignupPage implements OnInit {
     this.userData["coedPref"] = this.coedPref;
     this.userData["maxRent"] = this.maxRent;
 
+    this.userData['drugs'] = this.drugs;
+    this.userData['alcohol'] = this.alcohol;
+    this.userData['wake'] = this.wake;
+    this.userData['sleep'] = this.sleep;
+    this.userData['chores'] = this.chores;
+    this.userData['pets'] = this.pets;
+    this.userData['interests'] = this.interests;
+    this.userData['bio'] = this.bio;
 
-    this.storageService.addUser(this.firstName, this.userData);
-    this.storageService.getUser(this.firstName).then(res => {
+
+    this.storageService.addUser('0', this.userData);
+    this.storageService.getUser('0').then(res => {
       if (res != null) {
         console.log(res);
       }
