@@ -13,6 +13,7 @@ export class SignupPage implements OnInit {
   isLocationClick: number = 1;
   isCoedClick: number = 1;
   isBedroomClick: number = 1;
+  isGenderClick: string = 'm';
 
   firstName: string = "";
   lastName: string = "";
@@ -53,14 +54,17 @@ export class SignupPage implements OnInit {
 
   onMaleClick() {
     this.gender = "Male";
+    this.isGenderClick = 'm';
   }
 
   onFemaleClick() {
     this.gender = "Female";
+    this.isGenderClick = 'f';
   }
 
   onNonBinaryClick() {
     this.gender = "Non-Binary";
+    this.isGenderClick = 'nb';
   }
 
   haveHousingClick() {
@@ -126,14 +130,14 @@ export class SignupPage implements OnInit {
     this.userData["maxRent"] = this.maxRent;
 
 
-  //   this.storageService.addUser(this.firstName, this.userData);
-  //   this.storageService.getUser(this.firstName).then(res => {
-  //     if (res != null) {
-  //       console.log(res);
-  //     }
-  //   }).catch(e => {
-  //     console.log('error: ', e);
-  //   });
+    this.storageService.addUser(this.firstName, this.userData);
+    this.storageService.getUser(this.firstName).then(res => {
+      if (res != null) {
+        console.log(res);
+      }
+    }).catch(e => {
+      console.log('error: ', e);
+    });
   }
 
 }
