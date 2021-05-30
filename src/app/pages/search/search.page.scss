@@ -53,3 +53,18 @@ label{
     margin-top: 0%;
     margin-left: 0%;
 }
+
+ion-list ion-label{
+    color: black;
+    font-size: medium;
+}
+ion-list ion-button{
+    font-size: 7px;
+    --border-radius:4px;
+    opacity: 100%;
+    margin-left: 10px;
+}
+ion-list .indentation{
+    margin-left: 10px;
+    font-size: 7px;
+}
