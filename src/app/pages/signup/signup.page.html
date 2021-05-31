@@ -29,19 +29,19 @@
             <ion-select-option *ngFor="let major of majors" [value]="major">{{ major }}</ion-select-option>
           </ion-select>
           <div style="text-align: center;">
-            <ion-button class="gender-btn" (click)="onMaleClick()">
+            <ion-button id="male-btn" class="gender-btn" [color]="isGenderClick == 'm' ? 'primary': 'medium'" (click)="onMaleClick()">
               <div class="custom-button-content">
                 <ion-icon class="gender-icon" name="male-outline" size="large"></ion-icon>
                 <ion-label class="gender-btn-label">Male</ion-label>
               </div>
             </ion-button>
-            <ion-button class="gender-btn" color="secondary" (click)="onFemaleClick()">
+            <ion-button id="female-btn" class="gender-btn" [color]="isGenderClick == 'f' ? 'secondary': 'medium'" (click)="onFemaleClick()">
               <div class="custom-button-content">
                 <ion-icon class="gender-icon" name="female-outline" size="large"></ion-icon>
                 <ion-label class="gender-btn-label">Female</ion-label>
               </div>
             </ion-button>
-            <ion-button class="gender-btn" color="tertiary" (click)="onNonBinaryClick()">
+            <ion-button id="nonbinary-btn" class="gender-btn" [color]="isGenderClick == 'nb' ? 'tertiary': 'medium'" (click)="onNonBinaryClick()">
               <div class="custom-button-content">
                 <img class="gender-icon" src="../../../assets/images/nonbinary.png" style="width: 60%; height: 60%;">
                 <ion-label class="gender-btn-label">Non-Binary</ion-label>
@@ -120,13 +120,18 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label position="floating" class="floating-label">Max Rent (per month)</ion-label>
+              <ion-label position="floating" class="floating-label">
+                Max Rent (per month)
+              </ion-label>
             </ion-col>
+          </ion-row>
+          <ion-row>
+            <em style="font-size: xx-small;">This range was determined by the current rent prices from the housing communities around UC Irvine.</em>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-range min="300" max="1300" step="100" snaps="true" ticks="true" pin="true" style="margin-bottom: 0;" [(ngModel)]="maxRent" mode="ios">
-                <ion-label slot="start" style="font-size: x-small;">$300</ion-label>
+                <ion-label slot="start" style="font-size: x-small;">$500</ion-label>
                 <ion-label slot="end" style="font-size: x-small;">$1300+</ion-label>
               </ion-range>
             </ion-col>

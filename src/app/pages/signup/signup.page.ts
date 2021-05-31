@@ -13,6 +13,7 @@ export class SignupPage implements OnInit {
   isLocationClick: number = 1;
   isCoedClick: number = 1;
   isBedroomClick: number = 1;
+  isGenderClick: string = 'm';
 
   firstName: string = "";
   lastName: string = "";
@@ -63,14 +64,17 @@ export class SignupPage implements OnInit {
 
   onMaleClick() {
     this.gender = "Male";
+    this.isGenderClick = 'm';
   }
 
   onFemaleClick() {
     this.gender = "Female";
+    this.isGenderClick = 'f';
   }
 
   onNonBinaryClick() {
     this.gender = "Non-Binary";
+    this.isGenderClick = 'nb';
   }
 
   haveHousingClick() {
