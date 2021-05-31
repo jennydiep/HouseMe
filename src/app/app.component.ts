@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   constructor(private platform: Platform, private router : Router) {
     this.initializeApp();
   }
