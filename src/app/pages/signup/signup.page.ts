@@ -102,7 +102,7 @@ export class SignupPage implements OnInit {
     this.peoplePerBedroom = "2";
     this.isBedroomClick = 2;
   }
-  
+
   bedThreeClick() {
     this.peoplePerBedroom = "3";
     this.isBedroomClick = 3;
