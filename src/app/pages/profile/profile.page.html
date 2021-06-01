@@ -1,21 +1,23 @@
 <ion-header [translucent]="true">
+  
   <ion-toolbar>
-    Profile
+    <ion-icon class="back-btn" slot="start" name="chevron-back-outline" (click)="backButton()" size="large" color="light"></ion-icon>
+    {{name}}'s Profile
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <div class="header-box">
-    <ion-icon name="settings-outline" class="alignRight"></ion-icon>
+    <!-- <ion-icon ng-hide="id != null" name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon> -->
     <br />
-    <img id='pfp' src='../../../assets/images/kaeley.jpg'>
-    <h5> Kaeley Lenard </h5>
+    <img id='pfp' [src]='image'>
+    <h5> {{ name }} </h5>
     <div>
-      <ion-button color="tertiary" class="badge-text">Informatics</ion-button>
-      <ion-button color="primary" class="badge-text">Seeking Housing</ion-button>
+      <ion-button color="tertiary" class="badge-text">{{ major }}</ion-button>
+      <ion-button [color]="housingColor" class="badge-text">{{ housingStatus }}</ion-button>
     </div>
-    <p class="badge-text"> Hello! I am a third year Informatics major from Orange County
-    looking for housing, preferably a place with a parking space. </p>
+    <p class="badge-text"> {{ bio }} </p>
     <div>
       <a href="#" onclick="window.open('http://discord.com', '_system', 'location=yes'); return false;"><img class='social' src='../../../assets/images/discord.png'></a>
       <a href="#" onclick="window.open('http://facebook.com', '_system', 'location=yes'); return false;"><img class='social' src='../../../assets/images/facebook.png'></a>
@@ -33,22 +35,22 @@
     <div class="row">
       <div class="column">
         <p class="category"> LOCATION </p>
-        <p class="answer"> Off-Campus </p>
+        <p class="answer"> {{ housingLocation }} </p>
       </div>
       <div class="column">
         <p class="category"> HOUSEMATES </p>
-        <p class="answer"> All Genders </p>
+        <p class="answer"> {{ coedPref }} </p>
       </div>
     </div>
 
     <div class="row">
       <div class="column">
         <p class="category"> ROOM SIZE </p>
-        <p class="answer"> 2 people </p>
+        <p class="answer"> {{ peoplePerBedroom }}</p>
       </div>
     <div class="column">
       <p class="category"> MAX RENT </p>
-      <p class="answer"> $900/month </p>
+      <p class="answer"> ${{ maxRent }}/month </p>
       </div>
     </div>
   </div>
@@ -64,33 +66,33 @@
     <div class="row">
       <div class="column">
         <p class="category"> WAKES UP AT </p>
-        <p class="answer"> 9:00 AM </p>
+        <p class="answer"> {{ wake }} </p>
       </div>
       <div class="column">
         <p class="category"> SLEEPS AT </p>
-        <p class="answer"> 1:00 AM </p>
+        <p class="answer"> {{ sleep }} </p>
       </div>
     </div>
 
     <div class="row">
       <div class="column">
         <p class="category"> SMOKING </p>
-        <p class="answer"> Never </p>
+        <p class="answer"> {{ drugs }} </p>
       </div>
       <div class="column">
         <p class="category"> ALCOHOL </p>
-        <p class="answer"> Sometimes </p>
+        <p class="answer"> {{ alcohol }} </p>
       </div>
     </div>
 
     <div class="row">
       <div class="column">
         <p class="category"> CHORES </p>
-        <p class="answer"> Split equally </p>
+        <p class="answer"> {{ chores }} </p>
       </div>
       <div class="column">
         <p class="category"> PETS </p>
-        <p class="answer"> No </p>
+        <p class="answer"> {{ pets }} </p>
       </div>
       </div>
   </div>
@@ -99,18 +101,18 @@
   <div class="summary">
     <div>
       <img class='profile-icon' src='../../../assets/images/more.png'>
-      More about Kaeley
+      More about {{ firstName }}
     </div>
     <div class="border">&nbsp;</div>
 
     <div class="row">
       <div class="column">
         <p class="category"> AGE </p>
-        <p class="answer"> 21 years </p>
+        <p class="answer"> {{ age }} </p>
       </div>
       <div class="column">
         <p class="category"> GENDER </p>
-        <p class="answer"> Female </p>
+        <p class="answer"> {{ gender }} </p>
       </div>
     </div>
 
@@ -128,7 +130,7 @@
     <div class="row">
       <div class="fullcolumn">
         <p class="category"> INTERESTS </p>
-        <p class="answer"> Design • Drums • Stardew Valley • Netflix • Shabu Shabu </p>
+        <p class="answer"> {{ interests }} </p>
       </div>
     </div>
   </div>

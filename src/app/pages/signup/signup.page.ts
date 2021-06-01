@@ -128,6 +128,7 @@ export class SignupPage implements OnInit {
   }
 
   addUserData() {
+    this.userData["id"] = '0'; // hard coded for main user
     this.userData["firstName"] = this.firstName;
     this.userData["lastName"] = this.lastName;
     this.userData["birthday"] = this.birthday;
