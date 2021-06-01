@@ -13,9 +13,18 @@ const routes: Routes = [
   {
     path: 'accountaccess',
     loadChildren: () => import('./pages/accountaccess/accountaccess.module').then( m => m.AccountaccessPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  // {
+  //   path:'tabs/profile',
+  //   loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  // },
+  {
+    path:'tabs/profile/:id',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
 
 ];
