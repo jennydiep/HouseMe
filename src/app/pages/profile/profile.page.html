@@ -2,16 +2,16 @@
   
   <ion-toolbar>
     <ion-icon class="back-btn" slot="start" name="chevron-back-outline" (click)="backButton()" size="large" color="light"></ion-icon>
-    Profile
+    {{name}}'s Profile
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   
   <div class="header-box">
-    <ion-icon name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon>
+    <!-- <ion-icon ng-hide="id != null" name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon> -->
     <br />
-    <img id='pfp' src='../../../assets/images/kaeley.jpg'>
+    <img id='pfp' [src]='image'>
     <h5> {{ name }} </h5>
     <div>
       <ion-button color="tertiary" class="badge-text">{{ major }}</ion-button>
@@ -101,7 +101,7 @@
   <div class="summary">
     <div>
       <img class='profile-icon' src='../../../assets/images/more.png'>
-      More about Kaeley
+      More about {{ firstName }}
     </div>
     <div class="border">&nbsp;</div>
 

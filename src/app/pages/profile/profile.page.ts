@@ -12,7 +12,9 @@ import { Location } from "@angular/common";
 })
 export class ProfilePage {
   id:string;
+  image:string = '../../../assets/images/person.png';
 
+  firstName:string = "";
   name:string = "";
   age:string = "N/A";
   bio:string = "";
@@ -49,6 +51,7 @@ export class ProfilePage {
     this.storageService.getUser(id).then(res => {
       if (res != null) {
         this.name = res.firstName + " " + res.lastName;
+        this.firstName = res.firstName;
         if (res.birthday != "") {
           this.age = String(Number(new Date().getFullYear()) - Number(new Date(res.birthday).getFullYear())) + " years";
         }
@@ -98,6 +101,10 @@ export class ProfilePage {
         }
         this.interests += interestsList[interestsList.length-1];
         this.gender = res.gender;
+
+        if (res.image != null){
+          this.image = res.image;
+        }
 
         // console.log(res);
       }
