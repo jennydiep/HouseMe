@@ -16,6 +16,8 @@ export class MessagesPage implements OnInit{
   showBackButton = false;
   image:string;
   name:string;
+  messages = [];
+  text:string;
 
   number_of_users:number = 7;
   id:string = '0'
@@ -36,6 +38,7 @@ export class MessagesPage implements OnInit{
   }
 
   ionViewDidEnter() {
+    this.messages = [];
     this.id = this.route.snapshot.paramMap.get('id'); // get id from url
 
     if (this.id != null){
@@ -80,8 +83,7 @@ export class MessagesPage implements OnInit{
 
   backButton(){
     this.showBackButton = false;
-    console.log("back button")
-    console.log(this.id)
+    console.log("back button");
     let temp = this.route.snapshot.paramMap.get('id');
     if (temp != null){ // came from a profile page
       this.location.back();
@@ -89,6 +91,11 @@ export class MessagesPage implements OnInit{
     else{
       this.show_message_list_block();
     }
+  }
+
+  sendMessage(){
+    this.messages.push(this.text)
+    this.text = ''; // clear text after
   }
 
 }
