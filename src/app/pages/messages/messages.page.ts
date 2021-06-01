@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Location } from "@angular/common";
+import { StorageService } from 'src/app/storage.service';
+
 @Component({
   selector: 'app-messages',
   templateUrl: 'messages.page.html',
@@ -9,43 +12,59 @@ import { Router } from '@angular/router';
 export class MessagesPage implements OnInit{
   private personList = [];
   private isHidden = false;
-  constructor(private platform: Platform, private router: Router) {
+  showBackButton = false;
+  image:string;
+  name:string;
 
+  number_of_users:number = 6;
+  id:string = '0'
 
-    const person1 = {firstName: 'Yang',lastName:'Li',housingStatus:'Has',major:'Software Engineering',last_message:'Hello, I am new to the area and would like to live with people with similar interests such as coding',img:'assets/images/yang.JPG'};
-    const person2 = {firstName: 'Jenny',lastName:'Diep',housingStatus:'Has',major:'Computer Science',last_message:'Hello, I am new to the area and would like to live with people with similar interests such as coding',img:'assets/images/jenny.jpg'};
-    const person3 = {firstName: 'Kaeley',lastName:'Lenard',housingStatus:'Need',major:'Computer Science',last_message:'Hello, I am new to the area and would like to live with people with similar interests such as coding',img:'assets/images/kaeley.jpg'};
-    const person4 = {firstName: 'Crystal',lastName:'Lee',housingStatus:'Need',major:'Informatics',last_message:'Hello, I am new to the area and would like to live with people with similar interests such as coding',img:'assets/images/crystal.png'};
-    const person5 = {firstName: 'Hao',lastName:'Rong',housingStatus:'Has',major:'Computer Science',last_message:'Hello, I am new to the area and would like to live with people with similar interests such as coding',img:'assets/images/person.png'};
-    this.personList.push(person1);
-    this.personList.push(person2);
-    this.personList.push(person3);
-    this.personList.push(person4);
-    this.personList.push(person5);
+  constructor(private platform: Platform, private router: Router, private location: Location, private storageService: StorageService) {
 
+    this.personList=[]
 
+    let i = 1;
+    for (i = 1; i <= this.number_of_users; i++){
+      this.storageService.getUser(String(i)).then(res => {
+        this.personList.push(res)
+        console.log(res)
+      }).catch(e => {
+        console.log('error: ', e);
+      });
+    }
   }
 
 
   ngOnInit() {
   }
 
-  navigateTo(page: string){
+  navigateTo(){
     this.platform.ready().then(() => {
-      this.router.navigateByUrl(page);
+      this.router.navigateByUrl('tabs/profile/' + this.id);
     });
   }
 
   show_message_list_block() {
+    this.showBackButton = false;
     document.getElementById('message_list_block').style.display = 'block';
     document.getElementById('chat_block').style.display = 'none';
     document.getElementById('input_box').style.display = 'none';
   }
 
-  show_chat_block(){
+  show_chat_block(person:any){
+    this.showBackButton = true;
+    console.log(person.id)
+    this.id = person.id;
+    this.image = person.image;
+    this.name = person.firstName + " " + person.lastName;
 
     document.getElementById('message_list_block').style.display = 'none';
     document.getElementById('chat_block').style.display = 'block';
     document.getElementById('input_box').style.display = 'block';
   }
+
+  backButton(){
+    this.location.back();
+  }
+
 }
