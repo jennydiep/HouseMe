@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/storage.service';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { MinLengthValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +21,7 @@ export class SearchPage{
   hasHousingFill:String = "solid"
   needHousingFill:String = "outline"
   iconButton = "arrowDown"
-  majorList = ["Computer Science","Informatics","Art","Philosophy"]
+  majorList = ["Computer Science","Game Design and Interactive Media","Data Science","Business Information Management","Informatics"]
   recommendationList =[]
   personList=[]
 
@@ -41,43 +42,68 @@ export class SearchPage{
     this.countResults = 0;
     for (i = 1; i <= this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {
-        this.recommendationList.push(res)
-        this.countResults++;
+        this.personList.push(res)
+        if(res["housingStatus"]=="Have housing"){
+          let recObj = res
+          recObj["bio"] = this.shortenBio(recObj["bio"])
+          this.recommendationList.push(recObj)
+          this.countResults++
+        }
+        console.log(res)
       }).catch(e => {
         console.log('error: ', e);
       });
     }
-      
-    
-    
-    // let person1 = {firstName: "Hao",lastName:"Rong",housingStatus:"Has",major:"Valorant",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding",img:""}
-    // let person2 = {firstName: "Jenny",lastName:"Diep",housingStatus:"Has",major:"Apex",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    // let person3 = {firstName: "Kaeley",lastName:"Lenard",housingStatus:"Need",major:"CS",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    // let person4 = {firstName: "Crystal",lastName:"Lee",housingStatus:"Need",major:"Informatics",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    // this.personList.push(person1)
-    // this.personList.push(person2)
-    // this.personList.push(person3)
-    // this.personList.push(person4)
-
-
   }
-
+  shortenBio(bio:String){
+    let wordArray = bio.split(' ')
+    let result = ""
+    for(let i = 0 ; i < Math.min(wordArray.length, 10);i++){
+      result+=wordArray[i]+" "
+    }
+    result=result.substr(0,result.length-1)
+    if(result.endsWith(".")){
+      result=result.substr(0,result.length-1)
+    }
+    result+="..."
+    return result
+  }
   clickHasHousing(){
     this.hasHousingFill = "solid"
     this.needHousingFill = "outline"
 
+    let userGender = ""
+    this.storageService.getUser('0').then(res =>{
+      userGender = res.gender
+    }).catch(e => {
+      console.log('error: ', e);
+    });
+
     this.countResults = 0;
     this.recommendationList=[]
-    for(let i = 1 ; i<=this.number_of_users; i++){
-      this.storageService.getUser(String(i)).then(res => {
-        // console.log(res)
-        if(res["housingStatus"]=="Have housing"){
-          this.recommendationList.push(res);
-          this.countResults++
-        }
-      }).catch(e => {
-        console.log('error: ', e);
-      });
+    for (let i = 0; i < this.personList.length; i++){
+      if(this.personList[i]["housingLocation"] !== this.search_location && this.search_location !== undefined){
+        continue
+      }
+      if(this.personList[i]["coedPref"]!== this.search_gender && this.search_gender !== undefined){
+        continue
+      }
+      if(this.personList[i]["major"]!== this.search_Major && this.search_Major !== undefined){
+        continue
+      }
+      if(Number(this.search_rent_min) > this.personList[i]["maxRent"] && this.search_rent_min !==undefined){
+        continue
+      }
+      if(this.hasHousingFill === "solid" && this.personList[i]["housingStatus"]=="Do not have housing"){
+        continue
+      }
+      if(this.hasHousingFill === "outline" && this.personList[i]["housingStatus"]=="Have housing"){
+        continue
+      }
+      let recObj = this.personList[i]
+      recObj["bio"] = this.shortenBio(recObj["bio"])
+      this.recommendationList.push(recObj)
+      this.countResults++
     }
     
   }
@@ -86,18 +112,38 @@ export class SearchPage{
     this.needHousingFill = "solid"
     this.hasHousingFill = "outline"
 
+    let userGender = ""
+    this.storageService.getUser('0').then(res =>{
+      userGender = res.gender
+    }).catch(e => {
+      console.log('error: ', e);
+    });
+
     this.countResults = 0;
     this.recommendationList=[]
-    for(let i = 1 ; i<=this.number_of_users; i++){
-      this.storageService.getUser(String(i)).then(res => {
-        // console.log(res)
-        if(res["housingStatus"]=="Do not have housing"){
-          this.recommendationList.push(res);
-          this.countResults++
-        }
-      }).catch(e => {
-        console.log('error: ', e);
-      });
+    for (let i = 0; i < this.personList.length; i++){
+      if(this.personList[i]["housingLocation"] !== this.search_location && this.search_location !== undefined){
+        continue
+      }
+      if(this.personList[i]["coedPref"]!== this.search_gender && this.search_gender !== undefined){
+        continue
+      }
+      if(this.personList[i]["major"]!== this.search_Major && this.search_Major !== undefined){
+        continue
+      }
+      if(Number(this.search_rent_min) > this.personList[i]["maxRent"] && this.search_rent_min !==undefined){
+        continue
+      }
+      if(this.hasHousingFill === "solid" && this.personList[i]["housingStatus"]=="Do not have housing"){
+        continue
+      }
+      if(this.hasHousingFill === "outline" && this.personList[i]["housingStatus"]=="Have housing"){
+        continue
+      }
+      let recObj = this.personList[i]
+      recObj["bio"] = this.shortenBio(recObj["bio"])
+      this.recommendationList.push(recObj)
+      this.countResults++
     }
   }
 
@@ -119,8 +165,50 @@ export class SearchPage{
     console.log("Searching:",this.search_rent_max)
     console.log("Searching:",this.search_move_in)
     this.state = "search"
-  }
 
+    let userGender = ""
+    this.storageService.getUser('0').then(res =>{
+      userGender = res.gender
+    }).catch(e => {
+      console.log('error: ', e);
+    });
+
+    this.countResults = 0;
+    this.recommendationList=[]
+    for (let i = 0; i < this.personList.length; i++){
+      if(this.personList[i]["housingLocation"] !== this.search_location && this.search_location !== undefined){
+        continue
+      }
+      if(this.personList[i]["coedPref"]!== this.search_gender && this.search_gender !== undefined){
+        continue
+      }
+      if(this.personList[i]["major"]!== this.search_Major && this.search_Major !== undefined){
+        continue
+      }
+      if(Number(this.search_rent_min) > this.personList[i]["maxRent"] && this.search_rent_min !==undefined){
+        continue
+      }
+      if(this.hasHousingFill === "solid" && this.personList[i]["housingStatus"]=="Do not have housing"){
+        continue
+      }
+      if(this.hasHousingFill === "outline" && this.personList[i]["housingStatus"]=="Have housing"){
+        continue
+      }
+      let recObj = this.personList[i]
+      recObj["bio"] = this.shortenBio(recObj["bio"])
+      this.recommendationList.push(recObj)
+      this.countResults++
+    }
+  }
+  clearSearch(){
+    this.search_location=undefined
+    this.search_gender=undefined
+    this.search_Major=undefined
+    this.search_rent_min=undefined
+    this.search_rent_max=undefined
+    this.search_move_in=undefined
+    this.applySearch()
+  }
   onCardClick(person:any){
     this.router.navigateByUrl('tabs/profile/' + person.id);
   }

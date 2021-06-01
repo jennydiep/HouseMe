@@ -53,7 +53,10 @@ label{
     margin-top: 0%;
     margin-left: 0%;
 }
-
+#refreshButton{
+    margin-top: -5px;;
+    margin-left: 25px;
+}
 ion-list ion-label{
     color: black;
     font-size: medium;
@@ -68,16 +71,20 @@ ion-list ion-button{
 ion-list .indentation{
     font-size: 7px;
 }
+
 ion-avatar{
     width:80px !important;
     height:80px !important;
     position: relative;
     margin: 0 auto;
     margin-top: 20%;
+    margin-bottom: 20%;
     img{
         display: block;
         position: absolute;
         bottom: 0;
     }
 }
-
+ion-card{
+    margin-top:0px;
+}

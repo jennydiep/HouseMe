@@ -27,38 +27,57 @@
 <div *ngIf="displaySearch">
   <ion-card>
     <ion-card-content>
-      <p>Advanced Search Options</p>
-      <br>
-      <p>Location</p>
+      <ion-row>
+        <ion-col size="9">
+          <p>Advanced Search Options</p>
+        </ion-col>
+          <ion-col size="3">
+            <ion-button id = "refreshButton" size="bigger" fill ="" (click)="clearSearch()">
+            <ion-icon name="refresh-outline"></ion-icon>
+          </ion-button>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Location</p>
+        </ion-col>
+      </ion-row>
       <ion-radio-group [(ngModel)]="search_location">
         <ion-row>
           <ion-col size = "6">
-            <ion-radio mode="md" value="onCampus" color="secondary" checked= "true"></ion-radio>
+            <ion-radio mode="md" value="On Campus" color="secondary"></ion-radio>
             <ion-label>On Campus</ion-label>  
           </ion-col>
           <ion-col size = "6">
-            <ion-radio mode="md" value="OffCampus" color ="secondary"></ion-radio>
+            <ion-radio mode="md" value="Off Campus" color ="secondary"></ion-radio>
             <ion-label>Off Campus</ion-label>  
           </ion-col>
       </ion-row>
       </ion-radio-group>
       <br>
-      
-      <p>Co-Ed Preferences</p>
+      <ion-row>
+        <ion-col>
+          <p>Co-Ed Preferences</p>
+        </ion-col>
+      </ion-row>
       <ion-radio-group [(ngModel)]="search_gender">
         <ion-row>
           <ion-col size="5">
-            <ion-radio mode="md" value="co-ed" color="secondary"></ion-radio>
+            <ion-radio mode="md" value="All Genders" color="secondary"></ion-radio>
             <ion-label>Co-Ed</ion-label>  
           </ion-col>
           <ion-col size="7">
-            <ion-radio mode="md" value="sameGender" color="secondary"></ion-radio>
+            <ion-radio mode="md" value="Similar Only" color="secondary"></ion-radio>
             <ion-label>Same Gender</ion-label>
           </ion-col>
         </ion-row>
       </ion-radio-group>
       <br>
-      <p>Major Preferences</p>
+      <ion-row>
+        <ion-col>
+          <p>Major Preferences</p>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
           <ion-select placeholder="Select major" [(ngModel)]="search_Major">
@@ -67,7 +86,11 @@
         </ion-col>
       </ion-row>
       <br>
-      <p>Rent Range</p>
+      <ion-row>
+        <ion-col>
+          <p>Rent Range</p>
+        </ion-col>
+      </ion-row>
         <ion-row>
           <ion-col>
             <ion-input type="text" placeholder="Min"[(ngModel)]="search_rent_min"></ion-input>
@@ -78,7 +101,11 @@
           </ion-col>
         </ion-row>
         <br>
-      <p>Movie in Date</p>
+        <ion-row>
+          <ion-col>
+           <p>Movie in Date</p> 
+          </ion-col>
+        </ion-row>
       <ion-row>
         <ion-col>
           <ion-datetime expand='full' placeholder="Select Date" [(ngModel)]="search_move_in"></ion-datetime>
