@@ -9,11 +9,11 @@ import { StorageService } from 'src/app/storage.service';
 })
 export class SignupPage implements OnInit {
   majors: any = true;
-  isHousingClick: number = 1;
-  isLocationClick: number = 1;
-  isCoedClick: number = 1;
-  isBedroomClick: number = 1;
-  isGenderClick: string = 'm';
+  isHousingClick: number = 0;
+  isLocationClick: number = 0;
+  isCoedClick: number = 0;
+  isBedroomClick: number = 0;
+  isGenderClick: number = 0;
 
   firstName: string = "";
   lastName: string = "";
@@ -64,17 +64,17 @@ export class SignupPage implements OnInit {
 
   onMaleClick() {
     this.gender = "Male";
-    this.isGenderClick = 'm';
+    this.isGenderClick = 1;
   }
 
   onFemaleClick() {
     this.gender = "Female";
-    this.isGenderClick = 'f';
+    this.isGenderClick = 2;
   }
 
   onNonBinaryClick() {
-    this.gender = "Non-Binary";
-    this.isGenderClick = 'nb';
+    this.gender = "Other";
+    this.isGenderClick = 3;
   }
 
   haveHousingClick() {
