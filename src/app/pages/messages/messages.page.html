@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar (click)="show_message_list_block()">
+    <ion-icon *ngIf="showBackButton" class="back-btn" slot="start" name="chevron-back-outline" (click)="show_message_list_block()" size="large" color="light"></ion-icon>
     Messages
   </ion-toolbar>
 </ion-header>
@@ -16,12 +17,12 @@
 
     <!--    card list of contacts-->
     <div id="card_list" style="display: block">
-      <ion-list id = "contacts_list">
-        <ion-card *ngFor="let person of personList" >
+      <ion-list id = "contacts_list" *ngFor="let person of personList">
+        <ion-card  (click)="show_chat_block(person)">
           <ion-row>
             <ion-col size="4">
-              <ion-avatar class="profile-avatars" (click)="show_chat_block()">
-                <img src= {{person.img}}>
+              <ion-avatar class="profile-avatars" >
+                <img src= {{person.image}}>
               </ion-avatar>
             </ion-col>
             <ion-col size="8">
@@ -38,7 +39,7 @@
                 <ion-text>
                   {{person["last_message"]}}
                 </ion-text>
-                <ion-text style="color: #8c8c8c;size: 12px;margin-left: 3%" (click)="show_chat_block()">
+                <ion-text style="color: #8c8c8c;size: 12px;margin-left: 3%" (click)="show_chat_block(person)">
                   <b>See more....</b>
                 </ion-text>
               </div>
@@ -56,16 +57,16 @@
         <ion-row>
           <ion-col size="4">
             <ion-avatar>
-              <img src="assets/images/yang.JPG">
+              <img [src]="image">
             </ion-avatar>
           </ion-col>
           <ion-col size="8">
             <ion-row>
-              <ion-label style="font-size: medium;color: black;margin-top:3%;margin-bottom: 0px"><b>Yang Li</b></ion-label>
+              <ion-label style="font-size: medium;color: black;margin-top:3%;margin-bottom: 0px"><b>{{ name }}</b></ion-label>
             </ion-row>
             <ion-row>
               <ion-label style="font-size:x-small;color: var(--ion-color-primary);
-              margin-bottom: 7%;" (click)="navigateTo('profile')"><u><b>View Profile</b></u></ion-label>
+              margin-bottom: 7%;" (click)="navigateTo()"><u><b>View Profile</b></u></ion-label>
             </ion-row>
           </ion-col>
         </ion-row>
@@ -81,7 +82,7 @@
     <ion-row>
       <ion-col id = "message" size="2">
         <ion-avatar>
-          <img src="assets/images/yang.JPG">
+          <img [src]="image">
         </ion-avatar>
       </ion-col>
       <ion-col>
