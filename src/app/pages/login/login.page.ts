@@ -20,4 +20,8 @@ export class LoginPage implements OnInit {
     });
   }
 
+  navigateToAccountAccess() {
+    this.router.navigateByUrl('accountaccess');
+  }
+
 }
