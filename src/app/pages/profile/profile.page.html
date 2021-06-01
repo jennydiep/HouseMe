@@ -9,8 +9,8 @@
 <ion-content [fullscreen]="true">
   
   <div class="header-box">
-      <ion-icon id="mailbox" name="mail-outline"></ion-icon>
-    <!-- <ion-icon ng-hide="id != null" name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon> -->
+    <ion-icon *ngIf="id != null" id="mailbox" size="large" name="mail" class="alignRight" (click)="onClickMessage()"></ion-icon>
+    <ion-icon *ngIf="id == null" name="settings" size="large" class="alignRight" (click)="onClickSettings()"></ion-icon>
     <br />
     <img id='pfp' [src]='image'>
     <h5> {{ name }} </h5>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { StorageService } from 'src/app/storage.service';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-signup',
@@ -38,7 +39,7 @@ export class SignupPage implements OnInit {
 
   userData: object = {};
 
-  constructor(private router:Router, public storageService: StorageService) {
+  constructor(private router:Router, public storageService: StorageService, private location: Location) {
     this.majors = [
       'Business Information Management',
       'Game Design and Interactive Media',
@@ -158,6 +159,10 @@ export class SignupPage implements OnInit {
     }).catch(e => {
       console.log('error: ', e);
     });
+  }
+
+  backButton(){
+    this.location.back();
   }
 
 }
