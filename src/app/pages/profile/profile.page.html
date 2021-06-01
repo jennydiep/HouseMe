@@ -9,6 +9,7 @@
 <ion-content [fullscreen]="true">
   
   <div class="header-box">
+      <ion-icon id="mailbox" name="mail-outline"></ion-icon>
     <!-- <ion-icon ng-hide="id != null" name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon> -->
     <br />
     <img id='pfp' [src]='image'>
@@ -134,5 +135,20 @@
       </div>
     </div>
   </div>
-
+<div id= "footerButtons">
+  <ion-row>
+    <ion-col size="2"></ion-col>
+    <ion-col size="4">
+      <ion-button size="small" color="medium">
+      Hide
+    </ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button size="small" color="danger">
+        Report
+      </ion-button>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+</div>
 </ion-content>
