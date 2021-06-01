@@ -40,12 +40,12 @@ export class ProfilePage {
       this.getUserInfo('0'); // 0 is where main user data is stored
     }
     else{
-      this.getUserInfo(this.id);
+      this.getUserInfo(String(this.id));
     }
   }
 
   getUserInfo(id:string){
-    this.storageService.getUser('0').then(res => {
+    this.storageService.getUser(id).then(res => {
       if (res != null) {
         this.name = res.firstName + " " + res.lastName;
         if (res.birthday != "") {
@@ -77,7 +77,6 @@ export class ProfilePage {
         if (res.alcohol != ""){
           this.alcohol = res.alcohol;
         }
-        console.log("wake " + String(res.wake));
         if (res.wake != ""){
           this.wake = this.getTimeIn12HourFormat(res.wake);
         }
@@ -99,7 +98,7 @@ export class ProfilePage {
         this.interests += interestsList[interestsList.length-1];
         this.gender = res.gender;
 
-        console.log(res);
+        // console.log(res);
       }
     }).catch(e => {
       console.log('error: ', e);

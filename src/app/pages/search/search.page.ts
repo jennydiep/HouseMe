@@ -64,11 +64,11 @@ export class SearchPage{
   clickHasHousing(){
     this.hasHousingFill = "solid"
     this.needHousingFill = "outline"
-    // Do not have housing
+
     this.recommendationList=[]
     for(let i = 1 ; i<=this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {
-        console.log(res)
+        // console.log(res)
         if(res["housingStatus"]=="Have housing"){
           this.recommendationList.push(res);
           this.countResults++
@@ -87,7 +87,7 @@ export class SearchPage{
     this.recommendationList=[]
     for(let i = 1 ; i<=this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {
-        console.log(res)
+        // console.log(res)
         if(res["housingStatus"]=="Do not have housing"){
           this.recommendationList.push(res);
           this.countResults++
@@ -116,5 +116,9 @@ export class SearchPage{
     console.log("Searching:",this.search_rent_max)
     console.log("Searching:",this.search_move_in)
     this.state = "search"
+  }
+
+  onCardClick(person:any){
+    this.router.navigateByUrl('tabs/profile/' + person.id);
   }
 }

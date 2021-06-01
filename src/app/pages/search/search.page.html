@@ -101,8 +101,8 @@
 </div>
 
 
-  <ion-list>
-    <ion-card *ngFor="let person of recommendationList">
+  <ion-list *ngFor="let person of recommendationList">
+    <ion-card  (click)="onCardClick(person)">
       <ion-row>
         <ion-col size="3">
           <ion-avatar>
