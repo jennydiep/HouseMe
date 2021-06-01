@@ -4,6 +4,9 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/storage.service';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPage{
   displaySearch:boolean
-  countResults:number
+  countResults:number = 0
   state:string
   hasHousingFill:String = "solid"
   needHousingFill:String = "outline"
@@ -28,39 +31,53 @@ export class SearchPage{
   search_rent_max:number
   search_move_in:Date
 
-  constructor() {
+  number_of_users:number = 5;
+
+  constructor(private platform: Platform, private router : Router, private storageService: StorageService) {
     this.displaySearch = false;
     this.state ="recommendation"
-    
-    
-    let person1 = {firstName: "Hao",lastName:"Rong",housingStatus:"Has",major:"Valorant",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding",img:""}
-    let person2 = {firstName: "Jenny",lastName:"Diep",housingStatus:"Has",major:"Apex",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    let person3 = {firstName: "Kaeley",lastName:"Lenard",housingStatus:"Need",major:"CS",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    let person4 = {firstName: "Crystal",lastName:"Lee",housingStatus:"Need",major:"Informatics",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
-    this.personList.push(person1)
-    this.personList.push(person2)
-    this.personList.push(person3)
-    this.personList.push(person4)
 
-    for(let i = 0 ; i<this.personList.length; i++){
-      if(this.personList[i]["housingStatus"]=="Has"){
-        this.recommendationList.push(this.personList[i]);
-      }
+    let i = 1; 
+    for (i = 1; i <= this.number_of_users; i++){
+      this.storageService.getUser(String(i)).then(res => {
+        this.recommendationList.push(res)
+        
+      }).catch(e => {
+        console.log('error: ', e);
+      });
     }
-    this.countResults =this.recommendationList.length;
+      
+    
+    
+    // let person1 = {firstName: "Hao",lastName:"Rong",housingStatus:"Has",major:"Valorant",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding",img:""}
+    // let person2 = {firstName: "Jenny",lastName:"Diep",housingStatus:"Has",major:"Apex",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
+    // let person3 = {firstName: "Kaeley",lastName:"Lenard",housingStatus:"Need",major:"CS",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
+    // let person4 = {firstName: "Crystal",lastName:"Lee",housingStatus:"Need",major:"Informatics",bio:"Hello, I am new to the area and would like to live with people with similar interests such as coding"}
+    // this.personList.push(person1)
+    // this.personList.push(person2)
+    // this.personList.push(person3)
+    // this.personList.push(person4)
+
+
   }
 
   clickHasHousing(){
     this.hasHousingFill = "solid"
     this.needHousingFill = "outline"
-
+    // Do not have housing
     this.recommendationList=[]
-    for(let i = 0 ; i<this.personList.length; i++){
-      if(this.personList[i]["housingStatus"]=="Has"){
-        this.recommendationList.push(this.personList[i]);
-      }
+    for(let i = 1 ; i<=this.number_of_users; i++){
+      this.storageService.getUser(String(i)).then(res => {
+        console.log(res)
+        if(res["housingStatus"]=="Have housing"){
+          this.recommendationList.push(res);
+          this.countResults++
+        }
+      }).catch(e => {
+        console.log('error: ', e);
+      });
     }
-    this.countResults =this.recommendationList.length;
+    
   }
 
   clickNeedHousing(){
@@ -68,12 +85,17 @@ export class SearchPage{
     this.hasHousingFill = "outline"
 
     this.recommendationList=[]
-    for(let i = 0 ; i<this.personList.length; i++){
-      if(this.personList[i]["housingStatus"]=="Need"){
-        this.recommendationList.push(this.personList[i]);
-      }
+    for(let i = 1 ; i<=this.number_of_users; i++){
+      this.storageService.getUser(String(i)).then(res => {
+        console.log(res)
+        if(res["housingStatus"]=="Do not have housing"){
+          this.recommendationList.push(res);
+          this.countResults++
+        }
+      }).catch(e => {
+        console.log('error: ', e);
+      });
     }
-    this.countResults =this.recommendationList.length;
   }
 
   showAdvanceSearch(){
