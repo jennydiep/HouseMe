@@ -208,6 +208,8 @@ export class SearchPage{
     this.search_rent_max=undefined
     this.search_move_in=undefined
     this.applySearch()
+    this.state ="recommendation"
+
   }
   onCardClick(person:any){
     this.router.navigateByUrl('tabs/profile/' + person.id);
