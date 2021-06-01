@@ -45,9 +45,7 @@ export class ProfilePage {
   getUserInfo(id:string){
     this.storageService.getUser('0').then(res => {
       if (res != null) {
-        console.log(res);
         this.name = res.firstName + " " + res.lastName;
-        console.log(this.name)
         if (res.birthday != "") {
           this.age = String(Number(new Date().getFullYear()) - Number(new Date(res.birthday).getFullYear())) + " years";
         }
