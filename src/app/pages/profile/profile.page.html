@@ -12,7 +12,7 @@
     <h5> {{ name }} </h5>
     <div>
       <ion-button color="tertiary" class="badge-text">{{ major }}</ion-button>
-      <ion-button color="primary" class="badge-text">{{ housingStatus }}</ion-button>
+      <ion-button [color]="housingColor" class="badge-text">{{ housingStatus }}</ion-button>
     </div>
     <p class="badge-text"> {{ bio }} </p>
     <div>

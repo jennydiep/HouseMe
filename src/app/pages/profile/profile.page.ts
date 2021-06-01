@@ -27,6 +27,7 @@ export class ProfilePage {
   pets:string = "N/A";
   interests:string = "N/A";
   gender:string;
+  housingColor:string;
 
   constructor(private storageService:StorageService, private route:ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -53,6 +54,12 @@ export class ProfilePage {
         this.bio = res.bio;
         this.major = res.major;
         this.housingStatus = res.housingStatus;
+        if (this.housingStatus == "Do not have housing"){
+          this.housingColor = "primary"
+        }
+        else{
+          this.housingColor = "secondary"
+        }
         this.housingLocation = res.housingLocation;
 
         if (res.peoplePerBedroom > 1){
