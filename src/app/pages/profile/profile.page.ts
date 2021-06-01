@@ -3,6 +3,7 @@ import { ActivatedRoute , NavigationExtras} from '@angular/router';
 import { StorageService } from 'src/app/storage.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +32,7 @@ export class ProfilePage {
   gender:string;
   housingColor:string;
 
-  constructor(private storageService:StorageService, private route:ActivatedRoute, private platform: Platform, private router : Router) {
+  constructor(private storageService:StorageService, private route:ActivatedRoute, private platform: Platform, private router : Router, private location: Location) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -117,6 +118,10 @@ export class ProfilePage {
     this.platform.ready().then(() => {
       this.router.navigateByUrl('signup');
     });
+  }
+
+  backButton(){
+    this.location.back();
   }
 
 }

@@ -1,10 +1,13 @@
 <ion-header [translucent]="true">
+  
   <ion-toolbar>
+    <ion-icon class="back-btn" slot="start" name="chevron-back-outline" (click)="backButton()" size="large" color="light"></ion-icon>
     Profile
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <div class="header-box">
     <ion-icon name="settings-outline" class="alignRight" (click)="onClickSettings()"></ion-icon>
     <br />
