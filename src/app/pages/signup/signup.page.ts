@@ -20,10 +20,10 @@ export class SignupPage implements OnInit {
   birthday: string = "";
   major:string = "";
   gender: string = "";
-  housingStatus: string = "Have housing";
-  housingLocation: string = "On Campus";
-  peoplePerBedroom: string = "1";
-  coedPref: string = "All Genders";
+  housingStatus: string = "";
+  housingLocation: string = "";
+  peoplePerBedroom: string = "";
+  coedPref: string = "";
   maxRent: string = "";
 
   // personality page variables
