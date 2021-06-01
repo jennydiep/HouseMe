@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute , NavigationExtras} from '@angular/router';
 import { StorageService } from 'src/app/storage.service';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +31,7 @@ export class ProfilePage {
   gender:string;
   housingColor:string;
 
-  constructor(private storageService:StorageService, private route:ActivatedRoute) {
+  constructor(private storageService:StorageService, private route:ActivatedRoute, private platform: Platform, private router : Router) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -110,6 +112,12 @@ export class ProfilePage {
     hours = hours < 10 ? Number("0" + hours) : Number(hours);
     var minutes = new Date(date).getMinutes() < 10 ? "0" + new Date(date).getMinutes() : new Date(date).getMinutes();
     return hours + ":" + minutes + " " + am_pm;
+  }
+
+  onClickSettings(){
+    this.platform.ready().then(() => {
+      this.router.navigateByUrl('signup');
+    });
   }
 
 }
