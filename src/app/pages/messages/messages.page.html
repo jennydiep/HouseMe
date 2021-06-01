@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar (click)="show_message_list_block()">
-    <ion-icon *ngIf="showBackButton" class="back-btn" slot="start" name="chevron-back-outline" (click)="show_message_list_block()" size="large" color="light"></ion-icon>
+    <ion-icon *ngIf="showBackButton" class="back-btn" slot="start" name="chevron-back-outline" (click)="backButton()" size="large" color="light"></ion-icon>
     Messages
   </ion-toolbar>
 </ion-header>

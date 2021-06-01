@@ -36,18 +36,18 @@ export class ProfilePage {
 
   constructor(private storageService:StorageService, private route:ActivatedRoute, private platform: Platform, private router : Router, private location: Location) {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+    // console.log(this.id);
 
-    if (this.id == null) // no id means it is main user's profile
-    {
-      this.getUserInfo('0'); // 0 is where main user data is stored
-    }
-    else{
-      this.getUserInfo(String(this.id));
-    }
+    // if (this.id == null) // no id means it is main user's profile
+    // {
+    //   this.getUserInfo('0'); // 0 is where main user data is stored
+    // }
+    // else{
+    //   this.getUserInfo(String(this.id));
+    // }
   }
 
-  ionViewWillEnter() { // for when user updates their info we want the page to update based on db
+  ionViewDidEnter() { // for when user updates their info we want the page to update based on db
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -145,7 +145,7 @@ export class ProfilePage {
   }
 
   onClickMessage(){
-    console.log("message button")
+    this.router.navigateByUrl('tabs/messages/' + this.id);
   }
 
 }

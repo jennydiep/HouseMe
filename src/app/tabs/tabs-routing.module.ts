@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
+        path:'messages/:id',
+        loadChildren: () => import('../pages/messages/messages.module').then( m => m.MessagesPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/search',
         pathMatch: 'full'
