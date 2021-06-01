@@ -38,10 +38,11 @@ export class SearchPage{
     this.state ="recommendation"
 
     let i = 1; 
+    this.countResults = 0;
     for (i = 1; i <= this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {
         this.recommendationList.push(res)
-        
+        this.countResults++;
       }).catch(e => {
         console.log('error: ', e);
       });
@@ -65,6 +66,7 @@ export class SearchPage{
     this.hasHousingFill = "solid"
     this.needHousingFill = "outline"
 
+    this.countResults = 0;
     this.recommendationList=[]
     for(let i = 1 ; i<=this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {
@@ -84,6 +86,7 @@ export class SearchPage{
     this.needHousingFill = "solid"
     this.hasHousingFill = "outline"
 
+    this.countResults = 0;
     this.recommendationList=[]
     for(let i = 1 ; i<=this.number_of_users; i++){
       this.storageService.getUser(String(i)).then(res => {

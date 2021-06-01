@@ -11,7 +11,7 @@ import { StorageService } from 'src/app/storage.service';
 export class AppComponent {
 
   users = [{"id":"1", "image":"../../../assets/images/jenny.jpg", "firstName":"Jenny","lastName":"Diep","birthday":"11/23/1999","major":"Computer Science","gender":"Female","housingStatus":"Have housing","housingLocation":"On Campus",
-  "peoplePerBedroom":"1","coedPref":"All Genders","maxRent":1000,"drugs":"Never","alcohol":"Never","wake":"2021-05-29T12:00:30.022-07:00","sleep":"2021-05-29T01:00:30.023-07:00",
+  "peoplePerBedroom":"1","coedPref":"All Genders","maxRent":1000,"drugs":"Never","alcohol":"Never","wake":"2021-05-29T12:00:30.022-07:00","sleep":"2021-06-01T04:00:36.080-07:00",
   "chores":"Equal","pets":"No","interests":"Apex Legends, Boba, Anime, Piano, Drawing",
   "bio":"Hello~ I'm a fourth year computer science major who's graduting this year. I'm looking for roomates who are clean. Please feel free to message me if interested!"},
 
