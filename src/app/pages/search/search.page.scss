@@ -57,14 +57,27 @@ label{
 ion-list ion-label{
     color: black;
     font-size: medium;
+    margin-left: 0%;
 }
 ion-list ion-button{
     font-size: 7px;
     --border-radius:4px;
     opacity: 100%;
-    margin-left: 10px;
+    margin-left: 0%;
 }
 ion-list .indentation{
-    margin-left: 10px;
     font-size: 7px;
 }
+ion-avatar{
+    width:80px !important;
+    height:80px !important;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20%;
+    img{
+        display: block;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
