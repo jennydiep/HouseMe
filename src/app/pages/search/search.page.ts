@@ -32,7 +32,7 @@ export class SearchPage{
   search_rent_max:number
   search_move_in:Date
 
-  number_of_users:number = 6;
+  number_of_users:number = 7;
 
   constructor(private platform: Platform, private router : Router, private storageService: StorageService) {
     this.displaySearch = false;

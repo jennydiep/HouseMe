@@ -16,7 +16,7 @@ export class MessagesPage implements OnInit{
   image:string;
   name:string;
 
-  number_of_users:number = 6;
+  number_of_users:number = 7;
   id:string = '0'
 
   constructor(private platform: Platform, private router: Router, private location: Location, private storageService: StorageService) {
