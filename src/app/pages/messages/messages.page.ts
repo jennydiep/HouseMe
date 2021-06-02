@@ -11,7 +11,7 @@ import { ActivatedRoute , NavigationExtras} from '@angular/router';
   styleUrls: ['messages.page.scss']
 })
 export class MessagesPage implements OnInit{
-  private personList = [];
+  public personList = [];
   private isHidden = false;
   showBackButton = false;
   image:string;
