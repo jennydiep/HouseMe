@@ -2,7 +2,7 @@
   <ion-slides #slides [options]="{ allowTouchMove: false, autoHeight: true }">
     <ion-slide>
       <div class="slide-content" style="display: block; text-align: left;">
-        <ion-icon class="back-btn" slot="start" name="chevron-back-outline" (click)='navigateToAccountAccess()' size="large" color="primary"></ion-icon>
+        <ion-icon class="back-btn" slot="start" name="chevron-back-outline" (click)='backButton()' size="large" color="primary"></ion-icon>
         <h1 class="slide-title">Sign Up</h1>
         <ion-note class="subtitle">First, some basic info about you. <br /> Fields with a * are mandatory.</ion-note><br />
         <div>
@@ -29,19 +29,19 @@
             <ion-select-option *ngFor="let major of majors" [value]="major">{{ major }}</ion-select-option>
           </ion-select><br />
           <div style="text-align: center;">
-            <ion-button id="male-btn" class="gender-btn" [color]="isGenderClick == 'm' ? 'primary': 'medium'" (click)="onMaleClick()">
+            <ion-button id="male-btn" class="gender-btn" [color]="isGenderClick == 1 ? 'primary': 'medium'" (click)="onMaleClick()">
               <div class="custom-button-content">
                 <ion-icon class="gender-icon" name="male-outline" size="large"></ion-icon>
                 <ion-label class="gender-btn-label">Male</ion-label>
               </div>
             </ion-button>
-            <ion-button id="female-btn" class="gender-btn" [color]="isGenderClick == 'f' ? 'secondary': 'medium'" (click)="onFemaleClick()">
+            <ion-button id="female-btn" class="gender-btn" [color]="isGenderClick == 2 ? 'secondary': 'medium'" (click)="onFemaleClick()">
               <div class="custom-button-content">
                 <ion-icon class="gender-icon" name="female-outline" size="large"></ion-icon>
                 <ion-label class="gender-btn-label">Female</ion-label>
               </div>
             </ion-button>
-            <ion-button id="nonbinary-btn" class="gender-btn" [color]="isGenderClick == 'nb' ? 'tertiary': 'medium'" (click)="onNonBinaryClick()">
+            <ion-button id="nonbinary-btn" class="gender-btn" [color]="isGenderClick == 3 ? 'tertiary': 'medium'" (click)="onNonBinaryClick()">
               <div class="custom-button-content">
                 <ion-icon class="gender-icon" name="grid-outline" size="large"></ion-icon>
                 <ion-label class="gender-btn-label">Other</ion-label>
@@ -66,8 +66,8 @@
         <h1 class="slide-title">Housing</h1>
         <ion-note class="subtitle">Second, housing preferences.</ion-note>
         <div style="text-align: center;">
-          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick > 0 ? 'solid': 'outline'" (click)="haveHousingClick()">I already have housing.</ion-button>
-          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick < 0 ? 'solid': 'outline'" (click)="noHousingClick()">I do not have housing yet.</ion-button>
+          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick == 1 ? 'solid': 'outline'" (click)="haveHousingClick()">I already have housing.</ion-button>
+          <ion-button class="housing-btn" color="secondary" [fill]="isHousingClick == -1 ? 'solid': 'outline'" (click)="noHousingClick()">I do not have housing yet.</ion-button>
         </div>
         <p style="font-size: small; margin-bottom: 1em;">
           Please fill in the following information about your current housing preferences.
@@ -80,10 +80,10 @@
           </ion-row>
           <ion-row>
             <ion-col size="6" size-sm="2">
-              <ion-button class="location-btn" color="primary" [fill]="isLocationClick > 0 ? 'solid': 'outline'" (click)="onCampusClick()">On Campus</ion-button>
+              <ion-button class="location-btn" color="primary" [fill]="isLocationClick == 1 ? 'solid': 'outline'" (click)="onCampusClick()">On Campus</ion-button>
             </ion-col>
             <ion-col>
-              <ion-button class="location-btn" color="primary" [fill]="isLocationClick < 0 ? 'solid': 'outline'" (click)="offCampusClick()">Off Campus</ion-button>
+              <ion-button class="location-btn" color="primary" [fill]="isLocationClick == -1 ? 'solid': 'outline'" (click)="offCampusClick()">Off Campus</ion-button>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -112,10 +112,10 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick > 0 ? 'solid': 'outline'" (click)="yesCoedClick()">All Genders</ion-button>
+              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick == 1 ? 'solid': 'outline'" (click)="yesCoedClick()">All Genders</ion-button>
             </ion-col>
             <ion-col>
-              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick < 0 ? 'solid': 'outline'" (click)="noCoedClick()">Similar Only</ion-button>
+              <ion-button class="coed-btn" color="primary" [fill]="isCoedClick == -1 ? 'solid': 'outline'" (click)="noCoedClick()">Similar Only</ion-button>
             </ion-col>
           </ion-row>
           <ion-row>

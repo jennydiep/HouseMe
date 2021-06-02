@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { StorageService } from 'src/app/storage.service';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-signup',
@@ -9,21 +10,21 @@ import { StorageService } from 'src/app/storage.service';
 })
 export class SignupPage implements OnInit {
   majors: any = true;
-  isHousingClick: number = 1;
-  isLocationClick: number = 1;
-  isCoedClick: number = 1;
-  isBedroomClick: number = 1;
-  isGenderClick: string = 'm';
+  isHousingClick: number = 0;
+  isLocationClick: number = 0;
+  isCoedClick: number = 0;
+  isBedroomClick: number = 0;
+  isGenderClick: number = 0;
 
   firstName: string = "";
   lastName: string = "";
   birthday: string = "";
   major:string = "";
   gender: string = "";
-  housingStatus: string = "Have housing";
-  housingLocation: string = "On Campus";
-  peoplePerBedroom: string = "1";
-  coedPref: string = "All Genders";
+  housingStatus: string = "";
+  housingLocation: string = "";
+  peoplePerBedroom: string = "";
+  coedPref: string = "";
   maxRent: string = "";
 
   // personality page variables
@@ -38,7 +39,7 @@ export class SignupPage implements OnInit {
 
   userData: object = {};
 
-  constructor(private router:Router, public storageService: StorageService) {
+  constructor(private router:Router, public storageService: StorageService, private location: Location) {
     this.majors = [
       'Business Information Management',
       'Game Design and Interactive Media',
@@ -64,17 +65,17 @@ export class SignupPage implements OnInit {
 
   onMaleClick() {
     this.gender = "Male";
-    this.isGenderClick = 'm';
+    this.isGenderClick = 1;
   }
 
   onFemaleClick() {
     this.gender = "Female";
-    this.isGenderClick = 'f';
+    this.isGenderClick = 2;
   }
 
   onNonBinaryClick() {
-    this.gender = "Non-Binary";
-    this.isGenderClick = 'nb';
+    this.gender = "Other";
+    this.isGenderClick = 3;
   }
 
   haveHousingClick() {
@@ -158,6 +159,10 @@ export class SignupPage implements OnInit {
     }).catch(e => {
       console.log('error: ', e);
     });
+  }
+
+  backButton(){
+    this.location.back();
   }
 
 }

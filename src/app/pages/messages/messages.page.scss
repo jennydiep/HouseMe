@@ -1,0 +1,98 @@
+ion-button{
+  --border-radius:7px;
+  font-size:x-small;
+
+}
+ion-card{
+  border-radius: 10px;
+  font-size: x-small;
+}
+
+ion-searchbar{
+
+  border-radius: 10px;
+}
+
+ion-list ion-label{
+  color: black;
+  font-size: small;
+  margin-left: 0%;
+}
+ion-list ion-button{
+  font-size: 7px;
+  --border-radius:4px;
+  opacity: 100%;
+  margin-left: 0%;
+}
+ion-list .indentation{
+  font-size: 7px;
+}
+ion-list ion-avatar{
+  width:65px !important;
+  height:65px !important;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20%;
+  margin-left: 10%;
+  margin-bottom: 20%;
+  margin-right: 10%;
+  img{
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+}
+ion-list .ion-icon{
+
+  position: relative;
+  margin-left: 50%;
+  margin-top:  10%;
+}
+
+#header ion-avatar{
+  width:40px;
+  height:40px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-bottom: 20%;
+  margin-right: 10%;
+  img{
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+}
+#message ion-avatar {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 40%;
+  margin-left: 20%;
+  margin-bottom: 20%;
+  margin-right: 0%;
+
+  img {
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+}
+ion-input{
+
+  height: 50px;
+  width: 85%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left:3%;
+  margin-right: 0px;
+  background-color: white;
+
+}
+
+p {
+  color: white;
+  padding: 5px;
+}

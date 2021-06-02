@@ -36,6 +36,19 @@ export class ProfilePage {
 
   constructor(private storageService:StorageService, private route:ActivatedRoute, private platform: Platform, private router : Router, private location: Location) {
     this.id = this.route.snapshot.paramMap.get('id');
+    // console.log(this.id);
+
+    // if (this.id == null) // no id means it is main user's profile
+    // {
+    //   this.getUserInfo('0'); // 0 is where main user data is stored
+    // }
+    // else{
+    //   this.getUserInfo(String(this.id));
+    // }
+  }
+
+  ionViewDidEnter() { // for when user updates their info we want the page to update based on db
+    this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
 
     if (this.id == null) // no id means it is main user's profile
@@ -129,6 +142,10 @@ export class ProfilePage {
 
   backButton(){
     this.location.back();
+  }
+
+  onClickMessage(){
+    this.router.navigateByUrl('tabs/messages/' + this.id);
   }
 
 }

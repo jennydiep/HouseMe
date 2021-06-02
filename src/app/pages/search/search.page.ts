@@ -32,7 +32,7 @@ export class SearchPage{
   search_rent_max:number
   search_move_in:Date
 
-  number_of_users:number = 6;
+  number_of_users:number = 7;
 
   constructor(private platform: Platform, private router : Router, private storageService: StorageService) {
     this.displaySearch = false;
@@ -208,6 +208,8 @@ export class SearchPage{
     this.search_rent_max=undefined
     this.search_move_in=undefined
     this.applySearch()
+    this.state ="recommendation"
+
   }
   onCardClick(person:any){
     this.router.navigateByUrl('tabs/profile/' + person.id);
